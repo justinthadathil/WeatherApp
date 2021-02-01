@@ -1,0 +1,33 @@
+<div class="row" style="justify-content: center;">
+  <div class="col-md-7" *ngIf="weatherData">
+    <div style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+      <h1>Weather App</h1>
+    </div>
+    <div class="search-container" style="text-align: center;">
+        <input type="text" placeholder="Search.." name="search" style="width: 90%;    margin-bottom: 30px;" #userInput>
+        <button type="submit" (click)="userValue(userInput.value)"><i class="fa fa-search"></i></button>
+        <p>Area Name: {{weather.name}} {{weather.sys.country}}</p>
+    </div>
+    <div style="display: flex;">
+      <h1>{{(weather.main.temp - 32) * (5/9) |number:'1.0-0'}} &#176; C</h1>
+      <p style="    margin: auto 17px;">{{weather.weather[0].description}}</p>
+    </div>
+    <table class="table">
+        <tr>
+          <td>Humidity</td><td>{{weather.main.humidity}}</td>
+        </tr>
+        <tr>
+          <td>Preasure</td><td>{{weather.main.pressure}}</td>
+        </tr>
+        <tr>
+          <td>Sunrise</td><td>{{weather.sys.sunrise * 1000 | date: 'H:mm'}}</td>
+        </tr>
+        <tr>
+          <td>Sunset</td><td>{{weather.sys.sunset * 1000 | date: 'H:mm'}}</td>
+        </tr>
+        <tr>
+          <td>Geo Code</td><td>{{weather.coord.lat}}, {{weather.coord.lon}}</td>
+        </tr>
+    </table>
+  </div>
+</div>
